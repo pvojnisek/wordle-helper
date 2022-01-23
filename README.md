@@ -41,7 +41,10 @@ $ python ./src/solver.py
 
 And follow the instructions. If the word given by the solver is not accepted by the game, just hit enter for the next word.
 
-Have a nie time
+Exit from cli: type `x` into pattern input.
+If the suggested word is not accepted (not in the WORDLE database), just press Enter for the next hint.
+
+Have a nie time!
 
 ## 2. Jupyter Notebook
 

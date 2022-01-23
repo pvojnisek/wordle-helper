@@ -44,6 +44,7 @@ def main():
 
     print('Welcome to Wordle Solver!')
     print('Please visit the url for the game: https://www.powerlanguage.co.uk/wordle/')
+    print('For more information and instuctions: https://github.com/pvojnisek/wordle-helper')
     print('Initializing..')
 
     solver: Solver = Solver()
