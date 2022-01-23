@@ -1,13 +1,18 @@
+'''
+    Main module for the cli functions.
+'''
+
 import numpy as np
 from wordle_helper import WordleHelper
 
 
 class Solver():
+    '''The class handles pattern and next word recommendation functions.'''
 
-    def __init__(self, datafile) -> None:
-        self._wh = WordleHelper(datafile)
+    def __init__(self) -> None:
+        self._wh = WordleHelper()
 
-    def pick_a_random_word(self) -> str:
+    def pick_suggestion(self) -> str:
         '''Returns with a random word from the active directory.'''
         return np.random.choice(self._wh.get_words())
 
@@ -35,22 +40,24 @@ class Solver():
 
 
 def main():
+    '''Main function for cli mode'''
 
     print('Welcome to Wordle Solver!')
     print('Please visit the url for the game: https://www.powerlanguage.co.uk/wordle/')
+    print('For more information and instuctions: https://github.com/pvojnisek/wordle-helper')
     print('Initializing..')
 
-    solver: Solver = Solver('./data/words_dictionary.json')
+    solver: Solver = Solver()
     userinput: str = ''
 
     while userinput not in ['x', 'exit', 'quit', ' ']:
-        word = solver.pick_a_random_word()
-        print(f'word: {word}')
-        userinput = input(f'  Please write the results pattern (b-black, y-yellow, g-green):\n  {word}\n->')
+        word = solver.pick_suggestion()
+        print(f'Suggestion: {word}')
+        userinput = input(f'  Enter results pattern (b-black, y-yellow, g-green):\n  {word}\n->')
         if len(userinput) == 5:
             print('   Filtering..')
             solver.process_pattern(word, userinput)
-            print(f'  Results (top20): {solver}')
+            print(f'  {solver}')
 
 
 if __name__ == '__main__':
