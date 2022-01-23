@@ -1,10 +1,12 @@
-# WORDLE Helper
+# WORDLE Helper and Solver
 
 There is a pupular game around [WORDLE](https://www.powerlanguage.co.uk/wordle/)
 
 The game could be hard for non-English speaking people so I started to think of a helper for them to solve the game.
 
 WORDLE Helper lists words from [English Words](https://github.com/dwyl/english-words/) database.
+
+This is just a Saturday afternoon project to have some fun. The code is not optimized, not tested (however I usually do tdd). Please handle this project this way. I also take any responibility about any demages this software does.. :) If you have any suggestions, please share with me and any contributions are welcome!
 
 ## 1. download dictionary
 
