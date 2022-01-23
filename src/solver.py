@@ -1,5 +1,5 @@
-from wordle_helper import WordleHelper
 import numpy as np
+from wordle_helper import WordleHelper
 
 
 class Solver():
@@ -43,7 +43,7 @@ def main():
     solver: Solver = Solver('./data/words_dictionary.json')
     userinput: str = ''
 
-    while not userinput in ['x', 'exit', 'quit', ' ']:
+    while userinput not in ['x', 'exit', 'quit', ' ']:
         word = solver.pick_a_random_word()
         print(f'word: {word}')
         userinput = input(f'  Please write the results pattern (b-black, y-yellow, g-green):\n  {word}\n->')
