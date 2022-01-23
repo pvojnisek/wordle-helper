@@ -2,23 +2,20 @@
   This module gives functions to help you to solve WORDLE.
 '''
 
-from json import load
-from os.path import abspath
 from re import search
-
 import numpy as np
+from data_loader import load_english_words_from_github
 
 
 class WordleHelper():
     '''The Helper Class'''
 
-    def __init__(self, datafile_name='.././data/words_dictionary.json', word_len=5):
-        self._word_len = word_len
-        self.load_words(datafile_name, inplace=True)
-        self.filter_len(word_len, inplace=True)
+    def __init__(self):
+        self._words = load_english_words_from_github()
 
     def __repr__(self) -> str:
-        return str(self._words[:20])
+        sample = np.random.choice(self._words, 10)
+        return f'10 sample: {str(sample)}, all words: {len(self._words)}'
 
     def set_words(self, words) -> None:
         '''Sets the directory array.'''
@@ -27,25 +24,6 @@ class WordleHelper():
     def get_words(self) -> np.ndarray:
         '''Returns the dictionary.'''
         return self._words
-
-    def load_words(self, datafile_name, inplace=False) -> np.ndarray:
-        '''Loads the dictionary json file.'''
-        path = abspath(datafile_name)
-        with open(path, encoding='utf-8') as words_file:
-            loaded_words = np.array(list(load(words_file).keys()))
-        if inplace:
-            self.set_words(loaded_words)
-        return loaded_words
-
-    def filter_len(self, word_len, inplace=False) -> np.ndarray:
-        '''Filters the dictionary based on given length.'''
-        filtered_list: np.array = np.empty(0)
-        for word in self.get_words():
-            if len(word) == word_len:
-                filtered_list = np.append(filtered_list, word)
-        if inplace:
-            self.set_words(filtered_list)
-        return filtered_list
 
     def filter_regexp(self, regex: str, inplace=False):
         '''Filtering based on regular expression.'''

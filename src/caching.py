@@ -23,9 +23,10 @@ def load_from_cache(cache_id: str) -> np.ndarray:
     '''Loads data from a file based on cache_id.'''
     filename = __get_cache_filename(cache_id)
     if isfile(filename):
-        print('cache loaded: ' + filename)
         with open(filename, encoding='utf-8') as words_file:
-            return np.array(list(json.load(words_file)))
+            lst = np.array(list(json.load(words_file)))
+            print(f'cache loaded: {filename} - {len(lst)} words')
+            return lst
     else:
         return np.empty(0)
 
