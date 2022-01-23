@@ -27,3 +27,20 @@ Python 3.10.0
 ```
 $ pip install -r requirements.txt
 ```
+
+# Usage
+
+## 1. Solve in cli
+
+You can use the Solver from cli. Just start the solver.py from the project directory:
+```
+$ python ./src/solver.py
+```
+
+And follow the instructions. If the word given by the solver is not accepted by the game, just hit enter for the next word.
+
+Have a nie time
+
+## 2. Jupyter Notebook
+
+You can initialize and filter the helper from the cells of the notebook. See `example.ipynb` in the src directory.
