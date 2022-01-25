@@ -12,6 +12,9 @@ class Solver():
     def __init__(self) -> None:
         self._wh = WordleHelper()
 
+    def get_words(self) -> np.ndarray:
+        return self._wh.get_words()
+
     def pick_suggestion(self) -> str:
         '''Returns with a random word from the active directory.'''
         return np.random.choice(self._wh.get_words())

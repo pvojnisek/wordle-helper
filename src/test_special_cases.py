@@ -31,6 +31,11 @@ class SpecialCasesTest(unittest.TestCase):
         '''
         words = np.array(['asdfg', 'aassd', 'sugar', 'satre', 'speas'])
         solver = FakeSolver(words)
+
+        solver.process_pattern('ttttt', 'bbbbb')
+        self.assertEqual(len(solver.get_words()), 4, 'Words containting `t` must be filtered out!')
+        self.assertTrue('satre' not in solver.get_words(), '`satre` had to filtered out, because it contains letter `t`!')
+        self.assertTrue('sugar' in solver.get_words(), '`sugar` has to be in the filtered word list!')
+
         solver.process_pattern('speas', 'gbybb')
-        print(f'{solver=}')
-        
+        self.assertListEqual(['sugar'], solver.get_words().tolist(), 'word `sugar` has to be the only solution!')
