@@ -42,7 +42,7 @@ def load_english_words_from_github() -> list:
     '''
     words = load_from_cache()
     if len(words) == 0:
-        words = np.array(list(get(WORDS_GIT_DICTIONARY_URL).json().keys()))
+        words = np.unique(list(get(WORDS_GIT_DICTIONARY_URL).json().keys()))
         words = filter_length(words)
         save_to_cache(words)
         print(f'{len(words)} words loaded from {WORDS_GIT_DICTIONARY_URL}')

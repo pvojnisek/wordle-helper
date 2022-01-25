@@ -19,7 +19,7 @@ class WordleHelper():
 
     def set_words(self, words) -> None:
         '''Sets the directory array.'''
-        self._words: np.ndarray = words
+        self._words: np.ndarray = np.unique(words)
 
     def get_words(self) -> np.ndarray:
         '''Returns the dictionary.'''
